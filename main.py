@@ -4,7 +4,11 @@ import requests
 import base64
 
 app = FastAPI()
+from fastapi.responses import FileResponse
 
+@app.get("/")
+def serve_ui():
+    return FileResponse("index.html")
 # Allow frontend to talk to backend
 app.add_middleware(
     CORSMiddleware,
